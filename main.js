@@ -1,5 +1,18 @@
 const API_URL = "http://localhost:3020/workexperience";  // API URL
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Kontrollera om vi är på sidan med formuläret
+    const form = document.getElementById('workexperience-form');
+    if (form) {
+        form.addEventListener('submit', addExperience);
+    }
+
+    // Kontrollera om vi är på sidan med listan över arbetserfarenheter
+    if (document.getElementById('list')) {
+        fetchExperiences();
+    }
+});
+
 // Funktion för att hämta och visa arbetserfarenheter
 async function fetchExperiences() {
     const response = await fetch(API_URL);

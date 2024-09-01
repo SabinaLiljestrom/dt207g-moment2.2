@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulär</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Hem</a></li>
+            <li><a href="add.html">Lägg till arbetserfarenhet</a></li>
+            <li><a href="about.html">Om sidan</a></li>
+        </ul>
+    </nav>
+    <h1>Formulär arbetserfarenheter</h1>
+    <!-- Formulär för att lägga till ny arbetserfarenhet -->
+    <form id="workexperience-form">
+       <label for="companyname">Företagsnamn:</label>
+       <input type="text" id="companyname" name="companyname" required>
+       
+       <label for="jobtitle">Jobbtitel:</label>
+       <input type="text" id="jobtitle" name="jobtitle" required>
+       
+       <label for="location">Plats:</label>
+       <input type="text" id="location" name="location" required>
+       
+       <label for="startdate">Startdatum:</label>
+       <input type="date" id="startdate" name="startdate" required>
+       
+       <label for="enddate">Slutdatum:</label>
+       <input type="date" id="enddate" name="enddate">
+       
+       <label for="description">Beskrivning:</label>
+       <textarea id="description" name="description"></textarea>
+       
+       <button type="submit">Lägg till</button>
+   </form>
+   <script src="main.js"></script>
+</body>
+</html>
