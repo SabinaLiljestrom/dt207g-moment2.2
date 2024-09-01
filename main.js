@@ -27,7 +27,12 @@ async function fetchExperiences() {
 
     workexperiences.forEach(workexperience => {
         const li = document.createElement('li');
-        li.textContent = `${workexperience.companyname} - ${workexperience.jobtitle}, ${workexperience.description}, ${workexperience.location} (${workexperience.startdate} - ${workexperience.enddate || "Pågående"})`;
+        li.innerHTML = `
+        ${workexperience.companyname} - ${workexperience.jobtitle}<br>
+        ${workexperience.description}<br>
+        ${workexperience.location}<br>
+        ${workexperience.startdate} - ${workexperience.enddate || "Pågående"}
+      `;
 
         // Skapa raderingsknappen
         const deleteButton = document.createElement('button');
