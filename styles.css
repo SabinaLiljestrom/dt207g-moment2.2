@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    margin: 0;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input, textarea, button {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+}
+
+/* Styla navigationsmenyn */
+nav ul {
+    list-style-type: none;  /* Ta bort punkter framför listobjekten */
+    padding: 0;             /* Ta bort standard padding */
+    margin: 0;              /* Ta bort standard margin */
+    display: flex;          /* Använd flexbox för horisontell linjering */
+    justify-content: center; /* Centrera menyn */
+    background-color: #333; /* Bakgrundsfärg för menyn */
+}
+
+nav ul li {
+    margin: 0 15px; /* Mellanrum mellan menyobjekten */
+}
+
+nav ul li a {
+    text-decoration: none; /* Ta bort understrykning */
+    color: white; /* Färg på texten */
+    padding: 10px 20px; /* Inre avstånd i länkarna */
+    display: block; /* Gör länkarna klickbara över hela området */
+    font-family: Arial, sans-serif; /* Font stil */
+    font-size: 16px; /* Storlek på texten */
+}
+
+nav ul li a:hover {
+    background-color: #575757; /* Bakgrundsfärg vid hovring */
+}
