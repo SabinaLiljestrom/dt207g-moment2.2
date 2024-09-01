@@ -1,4 +1,6 @@
 body {
+    width: 100%;
+    height: auto;
     font-family: Arial, sans-serif;
     padding: 20px;
     margin: 0;
@@ -7,7 +9,10 @@ body {
 h1, h2 {
     color: #333;
 }
-
+.container{
+    max-width: 960px;
+    margin: 0 auto;
+}
 form {
     margin-bottom: 20px;
 }
@@ -20,6 +25,7 @@ label {
 input, textarea, button {
     display: block;
     width: 100%;
+    max-width: 400px;
     margin-top: 5px;
 }
 
@@ -30,6 +36,7 @@ ul {
 
 li {
     padding: 10px;
+    max-width: 400px;
     border: 1px solid #ddd;
     margin-bottom: 5px;
 }

@@ -52,23 +52,59 @@ async function fetchExperiences() {
 async function addExperience(event) {
     event.preventDefault();
 
+    // Rensa tidigare felmeddelanden
+    const errorList = document.getElementById('error-messages');
+    if (errorList) {
+        errorList.innerHTML = '';
+    }
+
     const formData = new FormData(event.target);
     const experienceData = Object.fromEntries(formData);
 
-    const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(experienceData)
-    });
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(experienceData)
+        });
 
-    if (response.ok) {
-        fetchExperiences(); // Uppdatera listan efter tillägg
-        event.target.reset(); // Rensa formuläret
-    } else {
-        console.error('Failed to add experience');
+        if (response.ok) {
+            fetchExperiences(); // Uppdatera listan efter tillägg
+            event.target.reset(); // Rensa formuläret
+        } else {
+            // Hantera valideringsfel
+            const result = await response.json();
+            if (result.errors) {
+                displayErrors(result.errors);
+            } else {
+                console.error('Något gick fel:', result.error);
+            }
+        }
+    } catch (error) {
+        console.error('Fel vid anslutning till API:', error);
     }
+}
+
+// Funktion för att visa felmeddelanden på sidan
+function displayErrors(errors) {
+    const errorList = document.getElementById('error-messages');
+    if (!errorList) {
+        // Skapa ett element för felmeddelanden om det inte finns
+        const form = document.getElementById('workexperience-form');
+        const errorList = document.createElement('ul');
+        errorList.id = 'error-messages';
+        errorList.style.color = 'red';
+        form.parentNode.insertBefore(errorList, form);
+    }
+
+    // Lägg till varje felmeddelande till listan
+    errors.forEach(error => {
+        const li = document.createElement('li');
+        li.textContent = error.msg;
+        errorList.appendChild(li);
+    });
 }
 
 // Funktion för att radera arbetserfarenhet
