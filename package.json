@@ -1,9 +1,10 @@
 {
   "name": "dt207g-moment2.2",
   "version": "1.0.0",
-  "main": "index.js",
+  "source": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "keywords": [],
   "author": "",
