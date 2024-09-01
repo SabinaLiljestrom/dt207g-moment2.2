@@ -28,6 +28,22 @@ async function fetchExperiences() {
     workexperiences.forEach(workexperience => {
         const li = document.createElement('li');
         li.textContent = `${workexperience.companyname} - ${workexperience.jobtitle}, ${workexperience.description}, ${workexperience.location} (${workexperience.startdate} - ${workexperience.enddate || "Pågående"})`;
+
+        // Skapa raderingsknappen
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Radera';
+        deleteButton.style.marginLeft = '10px';
+
+        // Lägg till en eventlistener för att radera arbetserfarenheten
+        deleteButton.addEventListener('click', async () => {
+            if (confirm(`Är du säker på att du vill radera ${workexperience.companyname}?`)) {
+                await deleteExperience(workexperience.id);
+                fetchExperiences(); // Uppdatera listan efter radering
+            }
+        });
+
+        // Lägg till knappen i listobjektet
+        li.appendChild(deleteButton);
         list.appendChild(li);
     });
 }
@@ -55,9 +71,15 @@ async function addExperience(event) {
     }
 }
 
-// Event Listeners
-document.getElementById('workexperience-form').addEventListener('submit', addExperience);
+// Funktion för att radera arbetserfarenhet
+async function deleteExperience(id) {
+    const response = await fetch(`${API_URL}/${id}`, {
+        method: 'DELETE',
+    });
 
-
-// Initiera sidan med att hämta och visa arbetserfarenheter
-fetchExperiences();
+    if (response.ok) {
+        console.log('Experience deleted successfully');
+    } else {
+        console.error('Failed to delete experience');
+    }
+}
